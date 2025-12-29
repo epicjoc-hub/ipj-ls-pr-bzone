@@ -1,39 +1,54 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 
 export default function AdminLogin() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
+  useEffect(() => {
+    // Verifică dacă există token în URL
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token');
+      if (token) {
+        handleTokenAuth(token);
+      }
+    }
+  }, []);
+
+  const handleTokenAuth = async (token: string) => {
     setIsLoading(true);
+    setError('');
 
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
-      });
-
+      const response = await fetch(`/api/auth/discord/verify?token=${token}`);
       const data = await response.json();
 
       if (response.ok && data.success) {
-        sessionStorage.setItem('admin_authenticated', 'true');
-        sessionStorage.setItem('admin_user', JSON.stringify(data.user));
-        router.push('/admin/dashboard');
+        // Obține datele utilizatorului
+        const userResponse = await fetch(`/api/discord/user?discordId=${data.discordId}`);
+        const userData = await userResponse.json();
+
+        if (userResponse.ok && userData.success) {
+          sessionStorage.setItem('admin_authenticated', 'true');
+          sessionStorage.setItem('admin_user', JSON.stringify({
+            discordId: data.discordId,
+            grad: userData.user.grad,
+            nume: userData.user.nume
+          }));
+          router.push('/admin/dashboard');
+        } else {
+          setError('Date utilizator negăsite. Te rugăm să-ți setezi gradul și numele în Discord.');
+        }
       } else {
-        setError(data.error || 'Credențiale invalide');
+        setError(data.error || 'Token invalid sau expirat');
       }
     } catch (error) {
-      console.error('Login error:', error);
+      console.error('Token auth error:', error);
       setError('Eroare la autentificare');
     } finally {
       setIsLoading(false);
@@ -45,64 +60,35 @@ export default function AdminLogin() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-md w-full bg-[var(--card-bg)] rounded-xl shadow-lg p-8 border border-[var(--border)]"
+        className="max-w-md w-full glass-card p-8"
       >
         <div className="text-center mb-8">
-          <div className="bg-[var(--primary)] text-[var(--accent)] px-6 py-3 rounded-lg inline-block mb-4">
+          <div className="bg-[var(--primary)] text-white px-6 py-3 rounded-lg inline-block mb-4">
             <span className="font-bold text-2xl">IPJ</span>
           </div>
           <h1 className="text-2xl font-bold text-[var(--text-primary)]">Admin Panel</h1>
           <p className="text-[var(--text-secondary)] mt-2">Acces restricționat</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="username" className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
-              Username
-            </label>
-            <input
-              type="text"
-              id="username"
-              value={username}
-              onChange={(e) => {
-                setUsername(e.target.value);
-                setError('');
-              }}
-              className="w-full px-4 py-3 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
-              placeholder="Introduceți username-ul"
-              required
-            />
+        {isLoading ? (
+          <div className="text-center py-8">
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--primary)]"></div>
+            <p className="mt-4 text-[var(--text-secondary)]">Se autentifică...</p>
           </div>
-
-          <div>
-            <label htmlFor="password" className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
-              Parolă
-            </label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                setError('');
-              }}
-              className="w-full px-4 py-3 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
-              placeholder="Introduceți parola"
-              required
-            />
-            {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+        ) : error ? (
+          <div className="bg-[var(--accent-warning)]/10 border border-[var(--accent-warning)] text-[var(--accent-warning)] px-4 py-3 rounded-lg mb-4">
+            <p className="text-sm">{error}</p>
           </div>
-
-          <motion.button
-            type="submit"
-            disabled={isLoading}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full bg-[var(--primary)] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[var(--primary-hover)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isLoading ? 'Se autentifică...' : 'Autentificare'}
-          </motion.button>
-        </form>
+        ) : (
+          <div className="text-center space-y-4">
+            <p className="text-[var(--text-secondary)]">
+              Pentru a accesa panoul de administrare, folosește butonul <strong>"Accesează Panel Admin"</strong> din Discord.
+            </p>
+            <p className="text-sm text-[var(--text-secondary)]">
+              Link-ul de autentificare va fi trimis în mesaj privat pe Discord.
+            </p>
+          </div>
+        )}
 
         <div className="mt-6 text-center">
           <a href="/" className="text-[var(--primary)] hover:text-[var(--primary-hover)] text-sm">
