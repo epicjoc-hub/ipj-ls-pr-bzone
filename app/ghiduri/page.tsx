@@ -75,9 +75,10 @@ export default function GhiduriPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8 text-center"
+          className="mb-12"
         >
-          <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-3">Ghid-uri</h1>
+          <div className="glass-card p-8 text-center">
+            <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-4">Ghid-uri</h1>
           <p className="text-base text-[var(--text-secondary)] max-w-2xl mx-auto">
             Ghiduri utile și programare pentru teste
           </p>
@@ -90,7 +91,7 @@ export default function GhiduriPage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05, duration: 0.2 }}
-              className="bg-[var(--card-bg)] rounded border border-[var(--border)] p-4 hover:border-[var(--primary)] transition-all duration-200"
+              className="glass-card p-6 glass-hover"
             >
               <h2 className="text-xl font-bold text-[var(--text-primary)] mb-2">
                 {ghid.titlu}
@@ -142,7 +143,7 @@ export default function GhiduriPage() {
                           required
                           value={formData.nume}
                           onChange={(e) => setFormData({ ...formData, nume: e.target.value })}
-                          className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+                          className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                         />
                       </div>
                       <div>
@@ -154,7 +155,7 @@ export default function GhiduriPage() {
                           required
                           value={formData.prenume}
                           onChange={(e) => setFormData({ ...formData, prenume: e.target.value })}
-                          className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+                          className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                         />
                       </div>
                     </div>
@@ -167,7 +168,7 @@ export default function GhiduriPage() {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                       />
                     </div>
                     <div>
@@ -179,7 +180,7 @@ export default function GhiduriPage() {
                         required
                         value={formData.telefon}
                         onChange={(e) => setFormData({ ...formData, telefon: e.target.value })}
-                        className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                       />
                     </div>
 

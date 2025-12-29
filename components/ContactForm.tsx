@@ -44,87 +44,91 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
       <div>
-        <label htmlFor="name" className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
+        <label htmlFor="name" className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
           Nume complet *
         </label>
         <input
           type="text"
           id="name"
           {...register('name')}
-          className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+          className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
           placeholder="Introduceți numele dvs."
         />
         {errors.name && (
-          <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
+          <p className="mt-1 text-sm text-[var(--accent-warning)]">{errors.name.message}</p>
         )}
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
+        <label htmlFor="email" className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
           Email *
         </label>
         <input
           type="email"
           id="email"
           {...register('email')}
-          className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+          className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
           placeholder="exemplu@email.com"
         />
         {errors.email && (
-          <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+          <p className="mt-1 text-sm text-[var(--accent-warning)]">{errors.email.message}</p>
         )}
       </div>
 
       <div>
-        <label htmlFor="subject" className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
+        <label htmlFor="subject" className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
           Subiect *
         </label>
         <input
           type="text"
           id="subject"
           {...register('subject')}
-          className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+          className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
           placeholder="Subiectul mesajului"
         />
         {errors.subject && (
-          <p className="mt-1 text-sm text-red-600">{errors.subject.message}</p>
+          <p className="mt-1 text-sm text-[var(--accent-warning)]">{errors.subject.message}</p>
         )}
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
+        <label htmlFor="message" className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
           Mesaj *
         </label>
         <textarea
           id="message"
           {...register('message')}
-          rows={5}
-          className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors resize-none"
+          rows={6}
+          className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors resize-none"
           placeholder="Scrieți mesajul dvs. aici..."
         />
         {errors.message && (
-          <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
+          <p className="mt-1 text-sm text-[var(--accent-warning)]">{errors.message.message}</p>
         )}
       </div>
 
       {submitStatus === 'success' && (
-        <div className="bg-[var(--accent)]/10 border border-[var(--accent)] text-[var(--accent)] px-4 py-2.5 rounded text-sm">
-          Mesajul a fost trimis cu succes! Vă vom contacta în cel mai scurt timp.
+        <div className="glass-card p-4 bg-[var(--accent)]/10 border-[var(--accent)]">
+          <p className="text-sm text-[var(--accent)]">
+            Mesajul a fost trimis cu succes! Vă vom contacta în cel mai scurt timp.
+          </p>
         </div>
       )}
 
       {submitStatus === 'error' && (
-        <div className="bg-[var(--accent-warning)]/10 border border-[var(--accent-warning)] text-[var(--accent-warning)] px-4 py-2.5 rounded text-sm">
-          A apărut o eroare la trimiterea mesajului. Vă rugăm să încercați din nou.
+        <div className="glass-card p-4 bg-[var(--accent-warning)]/10 border-[var(--accent-warning)]">
+          <p className="text-sm text-[var(--accent-warning)]">
+            A apărut o eroare la trimiterea mesajului. Vă rugăm să încercați din nou.
+          </p>
         </div>
       )}
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-[var(--primary)] text-white py-2.5 px-6 rounded font-semibold hover:bg-[var(--primary-hover)] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-[var(--primary)] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[var(--primary-hover)] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? 'Se trimite...' : 'Trimite Mesaj'}
       </button>

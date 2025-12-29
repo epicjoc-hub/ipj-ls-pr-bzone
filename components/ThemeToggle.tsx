@@ -13,19 +13,19 @@ export default function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="w-8 h-8 rounded bg-[var(--hover-bg)] animate-pulse" />
+      <div className="w-9 h-9 rounded-lg bg-[var(--hover-bg)] animate-pulse" />
     );
   }
 
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="relative p-1.5 rounded hover:bg-[var(--hover-bg)] transition-colors"
+      className="relative p-2 rounded-lg hover:bg-[var(--hover-bg)] transition-colors glass-card"
       aria-label="Toggle theme"
     >
       {theme === 'dark' ? (
         <svg
-          className="w-4 h-4 text-[var(--text-secondary)]"
+          className="w-5 h-5 text-[var(--text-primary)]"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -39,7 +39,7 @@ export default function ThemeToggle() {
         </svg>
       ) : (
         <svg
-          className="w-4 h-4 text-[var(--text-secondary)]"
+          className="w-5 h-5 text-[var(--text-primary)]"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -55,4 +55,3 @@ export default function ThemeToggle() {
     </button>
   );
 }
-

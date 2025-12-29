@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -71,18 +70,18 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-[var(--background)]">
-      <header className="bg-[var(--background)] border-b border-[var(--border)]">
-        <div className="container mx-auto px-4 py-3">
+      <header className="glass-navbar border-b border-[var(--glass-border)]">
+        <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-xl font-bold text-[var(--text-primary)]">Admin Panel</h1>
-              <p className="text-xs text-[var(--text-secondary)]">
+              <h1 className="text-2xl font-bold text-[var(--text-primary)]">Admin Panel</h1>
+              <p className="text-sm text-[var(--text-secondary)]">
                 {adminUser && `${adminUser.grad} ${adminUser.nume}`}
               </p>
             </div>
             <button
               onClick={handleLogout}
-              className="bg-[var(--primary)] text-white px-4 py-1.5 rounded text-sm font-semibold hover:bg-[var(--primary-hover)] transition-colors duration-200"
+              className="glass-card px-6 py-2.5 text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--glass-bg-hover)] transition-colors duration-300"
             >
               Deconectare
             </button>
@@ -90,57 +89,57 @@ export default function AdminDashboard() {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="mb-6">
-          <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-1">Panou de Control</h2>
-          <p className="text-sm text-[var(--text-secondary)]">Selectați secțiunea pe care doriți să o gestionați</p>
+      <div className="container mx-auto px-4 py-12">
+        <div className="glass-card p-8 mb-8">
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-2">Panou de Control</h2>
+          <p className="text-base text-[var(--text-secondary)]">Selectați secțiunea pe care doriți să o gestionați</p>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div className="bg-[var(--card-bg)] rounded border border-[var(--border)] p-4">
-            <div className="text-2xl font-bold text-[var(--primary)] mb-1">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="glass-card p-6 text-center">
+            <div className="text-4xl font-bold text-[var(--primary)] mb-2">
               {stats.cereriPending}
             </div>
-            <div className="text-xs text-[var(--text-secondary)]">Cereri în așteptare</div>
+            <div className="text-sm text-[var(--text-secondary)]">Cereri în așteptare</div>
           </div>
-          <div className="bg-[var(--card-bg)] rounded border border-[var(--border)] p-4">
-            <div className="text-2xl font-bold text-[var(--primary)] mb-1">
+          <div className="glass-card p-6 text-center">
+            <div className="text-4xl font-bold text-[var(--primary)] mb-2">
               {stats.programariPending}
             </div>
-            <div className="text-xs text-[var(--text-secondary)]">Programări în așteptare</div>
+            <div className="text-sm text-[var(--text-secondary)]">Programări în așteptare</div>
           </div>
-          <div className="bg-[var(--card-bg)] rounded border border-[var(--border)] p-4">
-            <div className="text-2xl font-bold text-[var(--primary)] mb-1">{stats.anunturi}</div>
-            <div className="text-xs text-[var(--text-secondary)]">Anunțuri active</div>
+          <div className="glass-card p-6 text-center">
+            <div className="text-4xl font-bold text-[var(--primary)] mb-2">{stats.anunturi}</div>
+            <div className="text-sm text-[var(--text-secondary)]">Anunțuri active</div>
           </div>
         </div>
 
         {/* Menu Items */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {menuItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="bg-[var(--card-bg)] rounded border border-[var(--border)] p-4 hover:border-[var(--primary)] transition-all duration-200 block relative"
+              className="glass-card p-6 glass-hover block relative"
             >
               {item.badge && item.badge > 0 && (
-                <span className="absolute top-2 right-2 bg-[var(--accent-warning)] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute top-4 right-4 bg-[var(--accent-warning)] text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
                   {item.badge}
                 </span>
               )}
-              <div className="text-3xl mb-2">{item.icon}</div>
-              <h3 className="text-base font-bold text-[var(--text-primary)] mb-1">{item.label}</h3>
-              <p className="text-xs text-[var(--text-secondary)]">Gestionare {item.label.toLowerCase()}</p>
+              <div className="text-4xl mb-3">{item.icon}</div>
+              <h3 className="text-lg font-bold text-[var(--text-primary)] mb-2">{item.label}</h3>
+              <p className="text-sm text-[var(--text-secondary)]">Gestionare {item.label.toLowerCase()}</p>
             </Link>
           ))}
         </div>
 
-        <div className="mt-6">
+        <div className="mt-8">
           <Link
             href="/"
             target="_blank"
-            className="inline-flex items-center gap-2 text-sm text-[var(--primary)] hover:text-[var(--primary-hover)] font-semibold transition-colors duration-200"
+            className="inline-flex items-center gap-2 text-sm text-[var(--primary)] hover:text-[var(--primary-hover)] font-semibold transition-colors duration-300"
           >
             🌐 Vizualizează Site
           </Link>

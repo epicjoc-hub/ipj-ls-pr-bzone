@@ -81,14 +81,16 @@ export default function CerereEvenimentPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8 text-center"
+          className="mb-12"
         >
-          <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-3">
-            Cerere Eveniment
-          </h1>
-          <p className="text-base text-[var(--text-secondary)]">
-            Completează formularul pentru a solicita aprobarea unui eveniment
-          </p>
+          <div className="glass-card p-8 text-center">
+            <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-4">
+              Cerere Eveniment
+            </h1>
+            <p className="text-lg text-[var(--text-secondary)]">
+              Completează formularul pentru a solicita aprobarea unui eveniment
+            </p>
+          </div>
         </motion.div>
 
         <motion.form
@@ -96,11 +98,11 @@ export default function CerereEvenimentPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-[var(--card-bg)] rounded border border-[var(--border)] p-6 space-y-6"
+          className="glass-card p-8 space-y-8"
         >
           {/* Secțiune: Informații Organizator */}
           <div>
-            <h2 className="text-xl font-bold text-[var(--text-primary)] mb-4">
+            <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
               1. Informații Organizator
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -111,7 +113,7 @@ export default function CerereEvenimentPage() {
                 <input
                   type="text"
                   {...register('nume')}
-                  className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                 />
                 {errors.nume && (
                   <p className="mt-1 text-sm text-red-600">{errors.nume.message}</p>
@@ -125,7 +127,7 @@ export default function CerereEvenimentPage() {
                 <input
                   type="text"
                   {...register('prenume')}
-                  className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                 />
                 {errors.prenume && (
                   <p className="mt-1 text-sm text-red-600">{errors.prenume.message}</p>
@@ -140,7 +142,7 @@ export default function CerereEvenimentPage() {
                   type="text"
                   placeholder="123-4567"
                   {...register('telefon')}
-                  className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                 />
                 {errors.telefon && (
                   <p className="mt-1 text-sm text-red-600">{errors.telefon.message}</p>
@@ -155,7 +157,7 @@ export default function CerereEvenimentPage() {
                   type="text"
                   placeholder="@username"
                   {...register('discordTag')}
-                  className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                 />
                 {errors.discordTag && (
                   <p className="mt-1 text-sm text-red-600">{errors.discordTag.message}</p>
@@ -166,7 +168,7 @@ export default function CerereEvenimentPage() {
 
           {/* Secțiune: Informații Eveniment */}
           <div>
-            <h2 className="text-xl font-bold text-[var(--text-primary)] mb-4">
+            <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
               2. Informații Eveniment
             </h2>
             <div className="space-y-4">
@@ -176,7 +178,7 @@ export default function CerereEvenimentPage() {
                 </label>
                 <select
                   {...register('tipEveniment')}
-                  className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                 >
                   <option value="">Selectează tipul</option>
                   <option value="Cursa">Cursă</option>
@@ -201,7 +203,7 @@ export default function CerereEvenimentPage() {
                   <input
                     type="text"
                     {...register('tipCustom')}
-                    className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                   />
                 </motion.div>
               )}
@@ -214,7 +216,7 @@ export default function CerereEvenimentPage() {
                   <input
                     type="date"
                     {...register('data')}
-                    className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                   />
                   {errors.data && (
                     <p className="mt-1 text-sm text-red-600">{errors.data.message}</p>
@@ -228,7 +230,7 @@ export default function CerereEvenimentPage() {
                   <input
                     type="time"
                     {...register('ora')}
-                    className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                   />
                   {errors.ora && (
                     <p className="mt-1 text-sm text-red-600">{errors.ora.message}</p>
@@ -244,7 +246,7 @@ export default function CerereEvenimentPage() {
                   type="number"
                   min="1"
                   {...register('numarParticipanti')}
-                  className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 border border-[var(--glass-border)] rounded-lg bg-[var(--glass-bg)] backdrop-filter backdrop-blur-sm text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                 />
                 {errors.numarParticipanti && (
                   <p className="mt-1 text-sm text-red-600">
@@ -319,7 +321,7 @@ export default function CerereEvenimentPage() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-[var(--primary)] text-white py-2.5 px-6 rounded font-semibold hover:bg-[var(--primary-hover)] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-[var(--primary)] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[var(--primary-hover)] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed glass-card"
           >
             {isSubmitting ? 'Se trimite...' : 'Trimite Cererea'}
           </button>

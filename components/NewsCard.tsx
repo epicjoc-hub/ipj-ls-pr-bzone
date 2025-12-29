@@ -25,8 +25,8 @@ export default function NewsCard({ news }: NewsCardProps) {
 
   return (
     <Link href={`/stiri/${news.slug}`}>
-      <article className="bg-[var(--card-bg)] border border-[var(--border)] rounded overflow-hidden hover:border-[var(--primary)] transition-all duration-200 h-full flex flex-col">
-        <div className="relative h-40 bg-[var(--background-secondary)]">
+      <article className="glass-card overflow-hidden glass-hover h-full flex flex-col">
+        <div className="relative h-48 bg-[var(--background-secondary)]">
           <Image
             src={news.image}
             alt={news.title}
@@ -34,20 +34,20 @@ export default function NewsCard({ news }: NewsCardProps) {
             className="object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          <div className="absolute top-3 left-3">
-            <span className="bg-[var(--primary)] text-white px-2 py-1 rounded text-xs font-semibold">
+          <div className="absolute top-4 left-4">
+            <span className="bg-[var(--primary)] text-white px-3 py-1.5 rounded-full text-xs font-semibold">
               {news.category}
             </span>
           </div>
         </div>
-        <div className="p-4 flex-grow flex flex-col">
-          <div className="text-xs text-[var(--text-secondary)] mb-2">
+        <div className="p-6 flex-grow flex flex-col">
+          <div className="text-xs text-[var(--text-secondary)] mb-3">
             {formattedDate} • {news.author}
           </div>
-          <h3 className="text-lg font-bold text-[var(--text-primary)] mb-2 line-clamp-2">
+          <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3 line-clamp-2">
             {news.title}
           </h3>
-          <p className="text-sm text-[var(--text-secondary)] mb-3 line-clamp-3 flex-grow">
+          <p className="text-sm text-[var(--text-secondary)] mb-4 line-clamp-3 flex-grow">
             {news.excerpt}
           </p>
           <div className="text-[var(--primary)] text-sm font-semibold hover:text-[var(--primary-hover)] transition-colors">
