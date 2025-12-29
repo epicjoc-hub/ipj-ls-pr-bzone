@@ -29,10 +29,10 @@ export default function ConducerePage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-12 text-center"
+          className="mb-8 text-center"
         >
-          <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-4">Conducere</h1>
-          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+          <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-3">Conducere</h1>
+          <p className="text-base text-[var(--text-secondary)] max-w-2xl mx-auto">
             Cunoașteți echipa de conducere a Inspectoratului de Poliție Județean Los Santos
           </p>
         </motion.div>
@@ -41,16 +41,15 @@ export default function ConducerePage() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
           {conducereData.map((membru) => (
             <motion.div
               key={membru.id}
               variants={itemVariants}
-              whileHover={{ y: -5 }}
-              className="bg-[var(--card-bg)] rounded-xl shadow-lg overflow-hidden border border-[var(--border)]"
+              className="bg-[var(--card-bg)] rounded overflow-hidden border border-[var(--border)] hover:border-[var(--primary)] transition-all duration-200"
             >
-              <div className="relative h-64 bg-gray-200">
+              <div className="relative h-56 bg-[var(--background-secondary)]">
                 <Image
                   src={membru.imagine}
                   alt={membru.nume}
@@ -59,17 +58,17 @@ export default function ConducerePage() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
-              <div className="p-6">
+              <div className="p-4">
                 <div className="mb-2">
-                  <span className="bg-[var(--primary)]/10 text-[var(--primary)] px-3 py-1 rounded text-xs font-semibold">
+                  <span className="bg-[var(--primary)]/10 text-[var(--primary)] px-2 py-1 rounded text-xs font-semibold">
                     {membru.grad}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-[var(--text-primary)] mb-1">
+                <h3 className="text-lg font-bold text-[var(--text-primary)] mb-1">
                   {membru.nume}
                 </h3>
-                <p className="text-[var(--primary)] font-semibold mb-3">{membru.functie}</p>
-                <p className="text-[var(--text-secondary)] text-sm mb-4 line-clamp-3">
+                <p className="text-[var(--primary)] text-sm font-semibold mb-2">{membru.functie}</p>
+                <p className="text-[var(--text-secondary)] text-sm mb-3 line-clamp-3">
                   {membru.descriere}
                 </p>
                 <a

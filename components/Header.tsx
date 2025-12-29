@@ -18,21 +18,17 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-[var(--primary)] text-white shadow-lg sticky top-0 z-50">
+    <header className="bg-[var(--background)] border-b border-[var(--border)] sticky top-0 z-50 backdrop-blur-sm bg-opacity-95">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-[70px]">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-[var(--accent)] text-[var(--primary)] px-4 py-2 rounded-lg font-bold text-xl shadow-md"
-            >
+            <div className="font-bold text-xl text-[var(--text-primary)] tracking-tight">
               IPJ
-            </motion.div>
+            </div>
             <div className="hidden sm:block">
-              <div className="font-bold text-lg">Inspectoratul de Poliție</div>
-              <div className="text-sm opacity-90">Județean Los Santos</div>
+              <div className="font-semibold text-sm text-[var(--text-primary)]">Inspectoratul de Poliție</div>
+              <div className="text-xs text-[var(--text-secondary)]">Județean Los Santos</div>
             </div>
           </Link>
 
@@ -42,12 +38,13 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="px-4 py-2 rounded-lg hover:bg-white/10 transition-colors font-medium"
+                className="px-3 py-2 text-sm font-medium text-[var(--text-primary)] hover:text-[var(--primary)] transition-colors relative group"
               >
                 {item.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--primary)] transition-all group-hover:w-full"></span>
               </Link>
             ))}
-            <div className="ml-4 pl-4 border-l border-white/20">
+            <div className="ml-3 pl-3 border-l border-[var(--border)]">
               <ThemeToggle />
             </div>
           </nav>
@@ -56,13 +53,12 @@ export default function Header() {
           <div className="lg:hidden flex items-center space-x-2">
             <ThemeToggle />
             <button
-              className="p-2"
+              className="p-2 text-[var(--text-primary)]"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
-              <motion.svg
-                animate={{ rotate: isMenuOpen ? 90 : 0 }}
-                className="w-6 h-6"
+              <svg
+                className="w-5 h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -82,7 +78,7 @@ export default function Header() {
                     d="M4 6h16M4 12h16M4 18h16"
                   />
                 )}
-              </motion.svg>
+              </svg>
             </button>
           </div>
         </div>
@@ -94,23 +90,18 @@ export default function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden pb-4 space-y-2 overflow-hidden"
+              transition={{ duration: 0.2 }}
+              className="lg:hidden pb-3 space-y-1 overflow-hidden border-t border-[var(--border)] mt-2 pt-3"
             >
-              {navItems.map((item, index) => (
-                <motion.div
+              {navItems.map((item) => (
+                <Link
                   key={item.href}
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: index * 0.1 }}
+                  href={item.href}
+                  className="block py-2 px-3 text-sm text-[var(--text-primary)] hover:text-[var(--primary)] hover:bg-[var(--hover-bg)] rounded transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
                 >
-                  <Link
-                    href={item.href}
-                    className="block py-2 px-4 rounded-lg hover:bg-white/10 transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
+                  {item.label}
+                </Link>
               ))}
             </motion.nav>
           )}

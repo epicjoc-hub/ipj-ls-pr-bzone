@@ -29,16 +29,16 @@ export default function GalleryGrid({ items }: GalleryGridProps) {
   return (
     <div>
       {/* Category Filter */}
-      <div className="mb-8">
+      <div className="mb-6">
         <div className="flex flex-wrap gap-2 justify-center">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+              className={`px-3 py-1.5 rounded text-sm font-semibold transition-colors ${
                 selectedCategory === category
-                  ? 'bg-blue-900 text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  ? 'bg-[var(--primary)] text-white'
+                  : 'bg-[var(--card-bg)] text-[var(--text-primary)] border border-[var(--border)] hover:bg-[var(--hover-bg)]'
               }`}
             >
               {category === 'all' ? 'Toate' : category}
@@ -48,24 +48,24 @@ export default function GalleryGrid({ items }: GalleryGridProps) {
       </div>
 
       {/* Gallery Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {filteredItems.map((item) => (
           <div
             key={item.id}
-            className="relative h-64 bg-gray-200 rounded-lg overflow-hidden cursor-pointer group"
+            className="relative h-56 bg-[var(--background-secondary)] rounded overflow-hidden cursor-pointer group border border-[var(--border)] hover:border-[var(--primary)] transition-all duration-200"
             onClick={() => setSelectedImage(item.image)}
           >
             <Image
               src={item.image}
               alt={item.title}
               fill
-              className="object-cover group-hover:scale-110 transition-transform duration-300"
+              className="object-cover group-hover:scale-105 transition-transform duration-200"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-end">
-              <div className="p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                <h3 className="font-semibold">{item.title}</h3>
-                <p className="text-sm">{item.description}</p>
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-200 flex items-end">
+              <div className="p-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-full">
+                <h3 className="font-semibold text-sm mb-1">{item.title}</h3>
+                <p className="text-xs">{item.description}</p>
               </div>
             </div>
           </div>
@@ -75,17 +75,17 @@ export default function GalleryGrid({ items }: GalleryGridProps) {
       {/* Lightbox */}
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
           <div className="relative max-w-5xl max-h-full">
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 text-white bg-black/50 hover:bg-black/70 rounded-full p-2 z-10"
+              className="absolute top-3 right-3 text-white bg-black/70 hover:bg-black/90 rounded p-2 z-10 transition-colors"
               aria-label="Close"
             >
               <svg
-                className="w-6 h-6"
+                className="w-5 h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -104,7 +104,7 @@ export default function GalleryGrid({ items }: GalleryGridProps) {
                 alt="Gallery image"
                 width={1200}
                 height={800}
-                className="object-contain max-h-[90vh]"
+                className="object-contain max-h-[90vh] rounded"
               />
             </div>
           </div>
@@ -113,4 +113,3 @@ export default function GalleryGrid({ items }: GalleryGridProps) {
     </div>
   );
 }
-

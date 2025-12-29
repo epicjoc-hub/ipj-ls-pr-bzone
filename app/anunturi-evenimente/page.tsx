@@ -28,12 +28,12 @@ export default function AnunturiEvenimentePage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-12 text-center"
+          className="mb-8 text-center"
         >
-          <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-4">
+          <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-3">
             Anunțuri Evenimente
           </h1>
-          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+          <p className="text-base text-[var(--text-secondary)] max-w-2xl mx-auto">
             Rămâneți la curent cu evenimentele aprobate din comunitate
           </p>
         </motion.div>
@@ -42,18 +42,17 @@ export default function AnunturiEvenimentePage() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="space-y-6"
+          className="space-y-4"
         >
           {anunturiData.map((anunt) => (
             <motion.div
               key={anunt.id}
               variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
-              className="bg-[var(--card-bg)] rounded-xl shadow-md p-6 border border-[var(--border)]"
+              className="bg-[var(--card-bg)] rounded border border-[var(--border)] p-4 hover:border-[var(--primary)] transition-all duration-200"
             >
-              <div className="flex items-start justify-between mb-4">
+              <div className="flex items-start justify-between mb-3">
                 <div>
-                  <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2">
+                  <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">
                     {anunt.titlu}
                   </h3>
                   <div className="flex flex-wrap gap-4 text-sm text-[var(--text-secondary)]">

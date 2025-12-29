@@ -16,8 +16,8 @@ interface OfficerCardProps {
 
 export default function OfficerCard({ officer }: OfficerCardProps) {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-      <div className="relative h-64 bg-gray-200">
+    <div className="bg-[var(--card-bg)] border border-[var(--border)] rounded overflow-hidden hover:border-[var(--primary)] transition-all duration-200">
+      <div className="relative h-56 bg-[var(--background-secondary)]">
         <Image
           src={officer.image}
           alt={officer.name}
@@ -26,20 +26,20 @@ export default function OfficerCard({ officer }: OfficerCardProps) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
-      <div className="p-6">
+      <div className="p-4">
         <div className="mb-2">
-          <span className="bg-blue-100 text-blue-900 px-3 py-1 rounded text-xs font-semibold">
+          <span className="bg-[var(--primary)]/10 text-[var(--primary)] px-2 py-1 rounded text-xs font-semibold">
             {officer.department}
           </span>
         </div>
-        <h3 className="text-xl font-bold text-gray-900 mb-1">{officer.name}</h3>
-        <p className="text-blue-900 font-semibold mb-3">{officer.position}</p>
-        <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+        <h3 className="text-lg font-bold text-[var(--text-primary)] mb-1">{officer.name}</h3>
+        <p className="text-[var(--primary)] text-sm font-semibold mb-2">{officer.position}</p>
+        <p className="text-[var(--text-secondary)] text-sm mb-3 line-clamp-3">
           {officer.description}
         </p>
         <a
           href={`mailto:${officer.email}`}
-          className="text-blue-900 hover:text-yellow-600 transition-colors text-sm font-semibold"
+          className="text-[var(--primary)] hover:text-[var(--primary-hover)] transition-colors text-sm font-semibold"
         >
           Contactează →
         </a>
@@ -47,4 +47,3 @@ export default function OfficerCard({ officer }: OfficerCardProps) {
     </div>
   );
 }
-

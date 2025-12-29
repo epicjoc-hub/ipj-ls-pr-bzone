@@ -71,118 +71,80 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-[var(--background)]">
-      <header className="bg-[var(--primary)] text-white shadow-lg">
-        <div className="container mx-auto px-4 py-4">
+      <header className="bg-[var(--background)] border-b border-[var(--border)]">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-2xl font-bold">Admin Panel</h1>
-              <p className="opacity-90 text-sm">
+              <h1 className="text-xl font-bold text-[var(--text-primary)]">Admin Panel</h1>
+              <p className="text-xs text-[var(--text-secondary)]">
                 {adminUser && `${adminUser.grad} ${adminUser.nume}`}
               </p>
             </div>
-            <motion.button
+            <button
               onClick={handleLogout}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-[var(--accent)] text-[var(--primary)] px-4 py-2 rounded-lg font-semibold hover:bg-[var(--accent-hover)] transition-colors"
+              className="bg-[var(--primary)] text-white px-4 py-1.5 rounded text-sm font-semibold hover:bg-[var(--primary-hover)] transition-colors duration-200"
             >
               Deconectare
-            </motion.button>
+            </button>
           </div>
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
-        >
-          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-2">Panou de Control</h2>
-          <p className="text-[var(--text-secondary)]">Selectați secțiunea pe care doriți să o gestionați</p>
-        </motion.div>
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-1">Panou de Control</h2>
+          <p className="text-sm text-[var(--text-secondary)]">Selectați secțiunea pe care doriți să o gestionați</p>
+        </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="bg-[var(--card-bg)] rounded-xl shadow-md p-6 border border-[var(--border)]"
-          >
-            <div className="text-3xl font-bold text-[var(--primary)] mb-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div className="bg-[var(--card-bg)] rounded border border-[var(--border)] p-4">
+            <div className="text-2xl font-bold text-[var(--primary)] mb-1">
               {stats.cereriPending}
             </div>
-            <div className="text-[var(--text-secondary)]">Cereri în așteptare</div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="bg-[var(--card-bg)] rounded-xl shadow-md p-6 border border-[var(--border)]"
-          >
-            <div className="text-3xl font-bold text-[var(--primary)] mb-2">
+            <div className="text-xs text-[var(--text-secondary)]">Cereri în așteptare</div>
+          </div>
+          <div className="bg-[var(--card-bg)] rounded border border-[var(--border)] p-4">
+            <div className="text-2xl font-bold text-[var(--primary)] mb-1">
               {stats.programariPending}
             </div>
-            <div className="text-[var(--text-secondary)]">Programări în așteptare</div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="bg-[var(--card-bg)] rounded-xl shadow-md p-6 border border-[var(--border)]"
-          >
-            <div className="text-3xl font-bold text-[var(--primary)] mb-2">{stats.anunturi}</div>
-            <div className="text-[var(--text-secondary)]">Anunțuri active</div>
-          </motion.div>
+            <div className="text-xs text-[var(--text-secondary)]">Programări în așteptare</div>
+          </div>
+          <div className="bg-[var(--card-bg)] rounded border border-[var(--border)] p-4">
+            <div className="text-2xl font-bold text-[var(--primary)] mb-1">{stats.anunturi}</div>
+            <div className="text-xs text-[var(--text-secondary)]">Anunțuri active</div>
+          </div>
         </div>
 
         {/* Menu Items */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {menuItems.map((item, index) => (
-            <motion.div
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {menuItems.map((item) => (
+            <Link
               key={item.href}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index }}
-              whileHover={{ y: -5 }}
+              href={item.href}
+              className="bg-[var(--card-bg)] rounded border border-[var(--border)] p-4 hover:border-[var(--primary)] transition-all duration-200 block relative"
             >
-              <Link
-                href={item.href}
-                className="bg-[var(--card-bg)] rounded-xl shadow-md p-6 hover:shadow-xl transition-all border border-[var(--border)] block relative"
-              >
-                {item.badge && item.badge > 0 && (
-                  <span className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
-                    {item.badge}
-                  </span>
-                )}
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">{item.label}</h3>
-                <p className="text-[var(--text-secondary)] text-sm">Gestionare {item.label.toLowerCase()}</p>
-              </Link>
-            </motion.div>
+              {item.badge && item.badge > 0 && (
+                <span className="absolute top-2 right-2 bg-[var(--accent-warning)] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {item.badge}
+                </span>
+              )}
+              <div className="text-3xl mb-2">{item.icon}</div>
+              <h3 className="text-base font-bold text-[var(--text-primary)] mb-1">{item.label}</h3>
+              <p className="text-xs text-[var(--text-secondary)]">Gestionare {item.label.toLowerCase()}</p>
+            </Link>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="mt-8"
-        >
+        <div className="mt-6">
           <Link
             href="/"
             target="_blank"
-            className="inline-flex items-center gap-2 text-[var(--primary)] hover:text-[var(--primary-hover)] font-semibold"
+            className="inline-flex items-center gap-2 text-sm text-[var(--primary)] hover:text-[var(--primary-hover)] font-semibold transition-colors duration-200"
           >
             🌐 Vizualizează Site
           </Link>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

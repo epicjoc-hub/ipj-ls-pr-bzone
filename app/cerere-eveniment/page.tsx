@@ -83,10 +83,10 @@ export default function CerereEvenimentPage() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8 text-center"
         >
-          <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-4">
+          <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-3">
             Cerere Eveniment
           </h1>
-          <p className="text-lg text-[var(--text-secondary)]">
+          <p className="text-base text-[var(--text-secondary)]">
             Completează formularul pentru a solicita aprobarea unui eveniment
           </p>
         </motion.div>
@@ -96,22 +96,22 @@ export default function CerereEvenimentPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-[var(--card-bg)] rounded-xl shadow-lg p-8 border border-[var(--border)] space-y-8"
+          className="bg-[var(--card-bg)] rounded border border-[var(--border)] p-6 space-y-6"
         >
           {/* Secțiune: Informații Organizator */}
           <div>
-            <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
+            <h2 className="text-xl font-bold text-[var(--text-primary)] mb-4">
               1. Informații Organizator
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
+                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
                   Nume *
                 </label>
                 <input
                   type="text"
                   {...register('nume')}
-                  className="w-full px-4 py-3 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                 />
                 {errors.nume && (
                   <p className="mt-1 text-sm text-red-600">{errors.nume.message}</p>
@@ -119,13 +119,13 @@ export default function CerereEvenimentPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
+                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
                   Prenume *
                 </label>
                 <input
                   type="text"
                   {...register('prenume')}
-                  className="w-full px-4 py-3 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                 />
                 {errors.prenume && (
                   <p className="mt-1 text-sm text-red-600">{errors.prenume.message}</p>
@@ -133,14 +133,14 @@ export default function CerereEvenimentPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
+                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
                   Număr Telefon * (format: xxx-xxxx)
                 </label>
                 <input
                   type="text"
                   placeholder="123-4567"
                   {...register('telefon')}
-                  className="w-full px-4 py-3 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                 />
                 {errors.telefon && (
                   <p className="mt-1 text-sm text-red-600">{errors.telefon.message}</p>
@@ -148,14 +148,14 @@ export default function CerereEvenimentPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
+                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
                   Discord Tag *
                 </label>
                 <input
                   type="text"
                   placeholder="@username"
                   {...register('discordTag')}
-                  className="w-full px-4 py-3 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                 />
                 {errors.discordTag && (
                   <p className="mt-1 text-sm text-red-600">{errors.discordTag.message}</p>
@@ -166,17 +166,17 @@ export default function CerereEvenimentPage() {
 
           {/* Secțiune: Informații Eveniment */}
           <div>
-            <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
+            <h2 className="text-xl font-bold text-[var(--text-primary)] mb-4">
               2. Informații Eveniment
             </h2>
-            <div className="space-y-6">
+            <div className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
+                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
                   Tip Eveniment *
                 </label>
                 <select
                   {...register('tipEveniment')}
-                  className="w-full px-4 py-3 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                 >
                   <option value="">Selectează tipul</option>
                   <option value="Cursa">Cursă</option>
@@ -195,26 +195,26 @@ export default function CerereEvenimentPage() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                 >
-                  <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
+                  <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
                     Specifică tipul evenimentului *
                   </label>
                   <input
                     type="text"
                     {...register('tipCustom')}
-                    className="w-full px-4 py-3 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                   />
                 </motion.div>
               )}
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
+                  <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
                     Data *
                   </label>
                   <input
                     type="date"
                     {...register('data')}
-                    className="w-full px-4 py-3 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                   />
                   {errors.data && (
                     <p className="mt-1 text-sm text-red-600">{errors.data.message}</p>
@@ -222,13 +222,13 @@ export default function CerereEvenimentPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
+                  <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
                     Ora *
                   </label>
                   <input
                     type="time"
                     {...register('ora')}
-                    className="w-full px-4 py-3 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                   />
                   {errors.ora && (
                     <p className="mt-1 text-sm text-red-600">{errors.ora.message}</p>
@@ -237,14 +237,14 @@ export default function CerereEvenimentPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
+                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
                   Număr Aproximativ Participanți *
                 </label>
                 <input
                   type="number"
                   min="1"
                   {...register('numarParticipanti')}
-                  className="w-full px-4 py-3 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                 />
                 {errors.numarParticipanti && (
                   <p className="mt-1 text-sm text-red-600">
@@ -278,7 +278,7 @@ export default function CerereEvenimentPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
+                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
                   Descriere *
                 </label>
                 <textarea
@@ -316,15 +316,13 @@ export default function CerereEvenimentPage() {
           )}
 
           {/* Submit Button */}
-          <motion.button
+          <button
             type="submit"
             disabled={isSubmitting}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full bg-[var(--primary)] text-white py-4 px-6 rounded-lg font-semibold hover:bg-[var(--primary-hover)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+            className="w-full bg-[var(--primary)] text-white py-2.5 px-6 rounded font-semibold hover:bg-[var(--primary-hover)] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? 'Se trimite...' : 'Trimite Cererea'}
-          </motion.button>
+          </button>
         </motion.form>
       </div>
     </div>

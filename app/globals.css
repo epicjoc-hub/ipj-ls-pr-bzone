@@ -1,42 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  /* Light Theme */
+  /* Light Theme - Modern Corporate */
   --background: #ffffff;
-  --foreground: #1f2937;
+  --background-secondary: #f8f9fa;
+  --foreground: #111827;
   --card-bg: #ffffff;
   --card-border: #e5e7eb;
-  --primary: #1e3a8a;
-  --primary-hover: #1e40af;
-  --accent: #fbbf24;
-  --accent-hover: #f59e0b;
-  --text-primary: #1f2937;
+  --primary: #1e40af;
+  --primary-hover: #1e3a8a;
+  --accent: #059669;
+  --accent-hover: #047857;
+  --accent-warning: #dc2626;
+  --text-primary: #111827;
   --text-secondary: #6b7280;
   --border: #e5e7eb;
   --hover-bg: #f9fafb;
 }
 
 [data-theme="dark"] {
-  /* Dark Theme */
-  --background: #0f172a;
-  --foreground: #f1f5f9;
-  --card-bg: #1e293b;
-  --card-border: #334155;
+  /* Dark Theme - Professional */
+  --background: #0a0a0a;
+  --background-secondary: #1a1a1a;
+  --foreground: #ffffff;
+  --card-bg: #1f1f1f;
+  --card-border: #2a2a2a;
   --primary: #3b82f6;
   --primary-hover: #2563eb;
-  --accent: #fbbf24;
-  --accent-hover: #f59e0b;
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --border: #334155;
-  --hover-bg: #1e293b;
+  --accent: #10b981;
+  --accent-hover: #059669;
+  --accent-warning: #ef4444;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --border: #2a2a2a;
+  --hover-bg: #1a1a1a;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  line-height: 1.6;
 }
 
 .container {
@@ -45,9 +50,30 @@ body {
   padding: 0 1rem;
 }
 
-/* Smooth transitions for theme changes */
+/* Subtle transitions for theme changes */
 * {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Typography Hierarchy */
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 /* React DatePicker Styles */

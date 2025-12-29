@@ -75,52 +75,48 @@ export default function GhiduriPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-12 text-center"
+          className="mb-8 text-center"
         >
-          <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-4">Ghid-uri</h1>
-          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+          <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-3">Ghid-uri</h1>
+          <p className="text-base text-[var(--text-secondary)] max-w-2xl mx-auto">
             Ghiduri utile și programare pentru teste
           </p>
         </motion.div>
 
-        <div className="space-y-8">
+        <div className="space-y-4">
           {ghiduri.map((ghid, index) => (
             <motion.div
               key={ghid.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-[var(--card-bg)] rounded-xl shadow-lg p-8 border border-[var(--border)]"
+              transition={{ delay: index * 0.05, duration: 0.2 }}
+              className="bg-[var(--card-bg)] rounded border border-[var(--border)] p-4 hover:border-[var(--primary)] transition-all duration-200"
             >
-              <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-3">
+              <h2 className="text-xl font-bold text-[var(--text-primary)] mb-2">
                 {ghid.titlu}
               </h2>
-              <p className="text-[var(--text-secondary)] mb-6">{ghid.descriere}</p>
+              <p className="text-sm text-[var(--text-secondary)] mb-4">{ghid.descriere}</p>
 
-              <div className="flex flex-wrap gap-4">
-                <motion.a
+              <div className="flex flex-wrap gap-3">
+                <a
                   href={ghid.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-[var(--primary)] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[var(--primary-hover)] transition-colors inline-block"
+                  className="bg-[var(--primary)] text-white px-4 py-2 rounded text-sm font-semibold hover:bg-[var(--primary-hover)] transition-colors duration-200 inline-block"
                 >
                   Vezi Ghid →
-                </motion.a>
-                <motion.button
+                </a>
+                <button
                   onClick={() =>
                     handleOpenForm(
                       ghid.id,
                       ghid.id === '1' ? 'Port-Armă' : 'Licență Tractări'
                     )
                   }
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-[var(--accent)] text-[var(--primary)] px-6 py-3 rounded-lg font-semibold hover:bg-[var(--accent-hover)] transition-colors"
+                  className="bg-[var(--accent)] text-[var(--primary)] px-4 py-2 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] transition-colors duration-200"
                 >
                   Programează-ți testarea
-                </motion.button>
+                </button>
               </div>
 
               {/* Formular Programare */}
@@ -129,13 +125,14 @@ export default function GhiduriPage() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="mt-6 pt-6 border-t border-[var(--border)]"
+                  transition={{ duration: 0.2 }}
+                  className="mt-4 pt-4 border-t border-[var(--border)]"
                 >
-                  <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4">
+                  <h3 className="text-lg font-bold text-[var(--text-primary)] mb-3">
                     Formular Programare Testare
                   </h3>
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       <div>
                         <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
                           Nume *
@@ -145,7 +142,7 @@ export default function GhiduriPage() {
                           required
                           value={formData.nume}
                           onChange={(e) => setFormData({ ...formData, nume: e.target.value })}
-                          className="w-full px-4 py-2 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)]"
+                          className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                         />
                       </div>
                       <div>
@@ -157,7 +154,7 @@ export default function GhiduriPage() {
                           required
                           value={formData.prenume}
                           onChange={(e) => setFormData({ ...formData, prenume: e.target.value })}
-                          className="w-full px-4 py-2 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)]"
+                          className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                         />
                       </div>
                     </div>
@@ -170,7 +167,7 @@ export default function GhiduriPage() {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-2 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)]"
+                        className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                       />
                     </div>
                     <div>
@@ -182,7 +179,7 @@ export default function GhiduriPage() {
                         required
                         value={formData.telefon}
                         onChange={(e) => setFormData({ ...formData, telefon: e.target.value })}
-                        className="w-full px-4 py-2 border border-[var(--border)] rounded-lg bg-[var(--background)] text-[var(--text-primary)]"
+                        className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
                       />
                     </div>
 
@@ -202,7 +199,7 @@ export default function GhiduriPage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="bg-[var(--primary)] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[var(--primary-hover)] disabled:opacity-50"
+                        className="bg-[var(--primary)] text-white px-4 py-2 rounded text-sm font-semibold hover:bg-[var(--primary-hover)] disabled:opacity-50 transition-colors duration-200"
                       >
                         {isSubmitting ? 'Se trimite...' : 'Trimite Cererea'}
                       </button>

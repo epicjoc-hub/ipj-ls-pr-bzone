@@ -32,10 +32,7 @@ export default function ContactForm() {
     setSubmitStatus('idle');
 
     try {
-      // Aici poți adăuga logica de trimitere email sau salvare în baza de date
-      // Pentru moment, simulăm o trimitere
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      
       console.log('Form data:', data);
       setSubmitStatus('success');
       reset();
@@ -47,16 +44,16 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
-        <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+        <label htmlFor="name" className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
           Nume complet *
         </label>
         <input
           type="text"
           id="name"
           {...register('name')}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent"
+          className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
           placeholder="Introduceți numele dvs."
         />
         {errors.name && (
@@ -65,14 +62,14 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+        <label htmlFor="email" className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
           Email *
         </label>
         <input
           type="email"
           id="email"
           {...register('email')}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent"
+          className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
           placeholder="exemplu@email.com"
         />
         {errors.email && (
@@ -81,14 +78,14 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-2">
+        <label htmlFor="subject" className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
           Subiect *
         </label>
         <input
           type="text"
           id="subject"
           {...register('subject')}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent"
+          className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors"
           placeholder="Subiectul mesajului"
         />
         {errors.subject && (
@@ -97,14 +94,14 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+        <label htmlFor="message" className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
           Mesaj *
         </label>
         <textarea
           id="message"
           {...register('message')}
-          rows={6}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:border-transparent resize-none"
+          rows={5}
+          className="w-full px-3 py-2 border border-[var(--border)] rounded bg-[var(--background)] text-[var(--text-primary)] focus:border-[var(--primary)] focus:outline-none transition-colors resize-none"
           placeholder="Scrieți mesajul dvs. aici..."
         />
         {errors.message && (
@@ -113,13 +110,13 @@ export default function ContactForm() {
       </div>
 
       {submitStatus === 'success' && (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg">
+        <div className="bg-[var(--accent)]/10 border border-[var(--accent)] text-[var(--accent)] px-4 py-2.5 rounded text-sm">
           Mesajul a fost trimis cu succes! Vă vom contacta în cel mai scurt timp.
         </div>
       )}
 
       {submitStatus === 'error' && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
+        <div className="bg-[var(--accent-warning)]/10 border border-[var(--accent-warning)] text-[var(--accent-warning)] px-4 py-2.5 rounded text-sm">
           A apărut o eroare la trimiterea mesajului. Vă rugăm să încercați din nou.
         </div>
       )}
@@ -127,11 +124,10 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-blue-900 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-[var(--primary)] text-white py-2.5 px-6 rounded font-semibold hover:bg-[var(--primary-hover)] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? 'Se trimite...' : 'Trimite Mesaj'}
       </button>
     </form>
   );
 }
-

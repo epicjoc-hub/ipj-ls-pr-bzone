@@ -38,23 +38,23 @@ export default function AnunturiPolitiePage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-12 text-center"
+          className="mb-8 text-center"
         >
-          <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-4">
+          <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-3">
             Anunțuri Poliție
           </h1>
-          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+          <p className="text-base text-[var(--text-secondary)] max-w-2xl mx-auto">
             Comunicate, anunțuri urgente și rapoarte săptămânale
           </p>
         </motion.div>
 
         {/* Filtru Categorii */}
-        <div className="mb-8 flex flex-wrap gap-2 justify-center">
+        <div className="mb-6 flex flex-wrap gap-2 justify-center">
           {categorii.map((categorie) => (
             <button
               key={categorie}
               onClick={() => setCategorieSelectata(categorie)}
-              className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
+              className={`px-3 py-1.5 rounded text-sm font-semibold transition-colors ${
                 categorieSelectata === categorie
                   ? 'bg-[var(--primary)] text-white'
                   : 'bg-[var(--card-bg)] text-[var(--text-primary)] border border-[var(--border)] hover:bg-[var(--hover-bg)]'
@@ -69,14 +69,13 @@ export default function AnunturiPolitiePage() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="space-y-6"
+          className="space-y-4"
         >
           {anunturiFiltrate.map((anunt) => (
             <motion.div
               key={anunt.id}
               variants={itemVariants}
-              whileHover={{ scale: 1.01 }}
-              className={`bg-[var(--card-bg)] rounded-xl shadow-md p-6 border-l-4 ${
+              className={`bg-[var(--card-bg)] rounded border-l-4 p-4 ${
                 anunt.categorie === 'Urgente'
                   ? 'border-red-500'
                   : anunt.categorie === 'Comunicate'
@@ -97,7 +96,7 @@ export default function AnunturiPolitiePage() {
                   >
                     {anunt.categorie}
                   </span>
-                  <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2">
+                  <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">
                     {anunt.titlu}
                   </h3>
                   <span className="text-sm text-[var(--text-secondary)]">

@@ -25,8 +25,8 @@ export default function NewsCard({ news }: NewsCardProps) {
 
   return (
     <Link href={`/stiri/${news.slug}`}>
-      <article className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-        <div className="relative h-48 bg-gray-200">
+      <article className="bg-[var(--card-bg)] border border-[var(--border)] rounded overflow-hidden hover:border-[var(--primary)] transition-all duration-200 h-full flex flex-col">
+        <div className="relative h-40 bg-[var(--background-secondary)]">
           <Image
             src={news.image}
             alt={news.title}
@@ -34,23 +34,23 @@ export default function NewsCard({ news }: NewsCardProps) {
             className="object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          <div className="absolute top-4 left-4">
-            <span className="bg-blue-900 text-white px-3 py-1 rounded text-sm font-semibold">
+          <div className="absolute top-3 left-3">
+            <span className="bg-[var(--primary)] text-white px-2 py-1 rounded text-xs font-semibold">
               {news.category}
             </span>
           </div>
         </div>
-        <div className="p-6 flex-grow flex flex-col">
-          <div className="text-sm text-gray-500 mb-2">
+        <div className="p-4 flex-grow flex flex-col">
+          <div className="text-xs text-[var(--text-secondary)] mb-2">
             {formattedDate} • {news.author}
           </div>
-          <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+          <h3 className="text-lg font-bold text-[var(--text-primary)] mb-2 line-clamp-2">
             {news.title}
           </h3>
-          <p className="text-gray-600 mb-4 line-clamp-3 flex-grow">
+          <p className="text-sm text-[var(--text-secondary)] mb-3 line-clamp-3 flex-grow">
             {news.excerpt}
           </p>
-          <div className="text-blue-900 font-semibold hover:text-yellow-600 transition-colors">
+          <div className="text-[var(--primary)] text-sm font-semibold hover:text-[var(--primary-hover)] transition-colors">
             Citește mai mult →
           </div>
         </div>
@@ -58,4 +58,3 @@ export default function NewsCard({ news }: NewsCardProps) {
     </Link>
   );
 }
-
