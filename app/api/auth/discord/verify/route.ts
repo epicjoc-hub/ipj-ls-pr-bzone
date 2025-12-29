@@ -23,12 +23,9 @@ export async function GET(request: Request) {
       tokens = JSON.parse(tokensData);
     }
 
-    // Elimină token-urile expirate
+    // Elimină token-urile expirate (doar in-memory — nu persistăm aici)
     const now = new Date();
     const validTokens = tokens.filter((t: any) => new Date(t.expiresAt) > now);
-    
-    // Salvează token-urile valide
-    fs.writeFileSync(TOKENS_FILE, JSON.stringify(validTokens, null, 2));
 
     // Caută token-ul
     const tokenData = validTokens.find((t: any) => t.token === token);
