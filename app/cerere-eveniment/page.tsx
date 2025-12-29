@@ -321,7 +321,7 @@ export default function CerereEvenimentPage() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-[var(--primary)] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[var(--primary-hover)] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed glass-card"
+            className="w-full bg-[var(--primary)] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[var(--primary-hover)] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? 'Se trimite...' : 'Trimite Cererea'}
           </button>

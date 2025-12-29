@@ -48,7 +48,7 @@ export default function Home() {
               <div className="relative w-32 h-32">
                 <Image
                   src="/images/logo-politia.png"
-                  alt="Logo Poliție"
+                  alt="Logo Inspectoratul de Poliție Județean Los Santos"
                   fill
                   className="object-contain drop-shadow-lg"
                   sizes="128px"
@@ -131,7 +131,6 @@ export default function Home() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {[
-              { href: '/conducere', icon: '👔', label: 'Conducere', desc: 'Cunoaște echipa de conducere' },
               { href: '/anunturi-evenimente', icon: '📅', label: 'Anunțuri Evenimente', desc: 'Evenimente aprobate' },
               { href: '/anunturi-politie', icon: '📢', label: 'Anunțuri Poliție', desc: 'Comunicate oficiale' },
               { href: '/ghiduri', icon: '📚', label: 'Ghid-uri', desc: 'Ghiduri și documentație' },

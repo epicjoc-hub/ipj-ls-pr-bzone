@@ -11,7 +11,6 @@ export default function Header() {
 
   const navItems = [
     { href: '/', label: 'Acasă' },
-    { href: '/conducere', label: 'Conducere' },
     { href: '/anunturi-evenimente', label: 'Anunțuri Evenimente' },
     { href: '/anunturi-politie', label: 'Anunțuri Poliție' },
     { href: '/cerere-eveniment', label: 'Cerere Eveniment' },
@@ -27,7 +26,7 @@ export default function Header() {
             <div className="relative w-14 h-14 flex-shrink-0">
               <Image
                 src="/images/logo-politia.png"
-                alt="Logo Poliție"
+                alt="Logo Inspectoratul de Poliție Județean Los Santos"
                 fill
                 className="object-contain transition-transform duration-300 group-hover:scale-105"
                 sizes="56px"

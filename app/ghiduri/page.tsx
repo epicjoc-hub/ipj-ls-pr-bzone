@@ -115,7 +115,7 @@ export default function GhiduriPage() {
                       ghid.id === '1' ? 'Port-Armă' : 'Licență Tractări'
                     )
                   }
-                  className="bg-[var(--accent)] text-[var(--primary)] px-4 py-2 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] transition-colors duration-200"
+                  className="bg-[var(--accent)] text-white px-4 py-2 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] transition-colors duration-200"
                 >
                   Programează-ți testarea
                 </button>

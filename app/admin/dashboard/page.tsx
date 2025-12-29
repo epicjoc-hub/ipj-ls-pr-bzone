@@ -57,7 +57,6 @@ export default function AdminDashboard() {
   }
 
   const menuItems = [
-    { href: '/admin/conducere', icon: '👔', label: 'Conducere', color: 'blue' },
     { href: '/admin/anunturi-evenimente', icon: '📅', label: 'Anunțuri Evenimente', color: 'green' },
     { href: '/admin/anunturi-politie', icon: '📢', label: 'Anunțuri Poliție', color: 'purple' },
     { href: '/admin/cereri-evenimente', icon: '📝', label: 'Cereri Evenimente', color: 'yellow', badge: stats.cereriPending },
