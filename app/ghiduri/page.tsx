@@ -79,9 +79,10 @@ export default function GhiduriPage() {
         >
           <div className="glass-card p-8 text-center">
             <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-4">Ghid-uri</h1>
-          <p className="text-base text-[var(--text-secondary)] max-w-2xl mx-auto">
-            Ghiduri utile și programare pentru teste
-          </p>
+            <p className="text-base text-[var(--text-secondary)] max-w-2xl mx-auto">
+              Ghiduri utile și programare pentru teste
+            </p>
+          </div>
         </motion.div>
 
         <div className="space-y-4">
